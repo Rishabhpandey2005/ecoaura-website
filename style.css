@@ -1,0 +1,644 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8f3;
+    color: #17251b;
+    line-height: 1.6;
+}
+
+
+/* Navigation */
+
+.navbar {
+    width: 100%;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #e5e8e2;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+.logo span {
+    font-weight: 400;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #17251b;
+    font-size: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Hero */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    background: #e7eee2;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(52px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 28px;
+}
+
+.hero-text {
+    max-width: 520px;
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.button {
+    display: inline-block;
+    padding: 14px 24px;
+    background: #17251b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+
+/* Sections */
+
+.why,
+.products,
+.story,
+.contact {
+    padding: 100px 8%;
+}
+
+h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 50px;
+}
+
+
+/* Features */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature {
+    background: white;
+    padding: 35px;
+    border: 1px solid #e2e6df;
+}
+
+.feature-icon {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    margin-bottom: 12px;
+}
+
+
+/* Products */
+
+.products {
+    background: #17251b;
+    color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    color: #17251b;
+    padding: 25px;
+}
+
+.product-image {
+    height: 220px;
+    background: #e7eee2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    margin-bottom: 25px;
+}
+
+.product-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    margin-bottom: 20px;
+}
+
+.product-card button,
+.contact button {
+    border: none;
+    padding: 12px 20px;
+    background: #17251b;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* Story */
+
+.story {
+    background: #e7eee2;
+}
+
+.story-content {
+    max-width: 850px;
+}
+
+.story-content p:not(.eyebrow) {
+    font-size: 19px;
+    margin-bottom: 20px;
+}
+
+
+/* Contact */
+
+.contact {
+    text-align: center;
+}
+
+.contact h2 {
+    max-width: 800px;
+    margin: 0 auto 25px;
+}
+
+.contact p {
+    margin-bottom: 30px;
+}
+
+
+/* Footer */
+
+footer {
+    padding: 30px 8%;
+    background: #101811;
+    color: white;
+    text-align: center;
+}
+
+
+/* Mobile */
+
+/* Hero Actions */
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.text-button {
+    color: #17251b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.text-button:hover {
+    text-decoration: underline;
+}
+
+
+/* Hero Badge */
+
+.hero {
+    position: relative;
+}
+
+.hero-badge {
+    position: absolute;
+    right: 10%;
+    bottom: 90px;
+    width: 180px;
+    height: 180px;
+    border: 1px solid #17251b;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(8deg);
+}
+
+.hero-badge span {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero-badge p {
+    font-size: 14px;
+    font-weight: 600;
+} @media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .hero-badge {
+        display: none;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .features,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why,
+    .products,
+    .story,
+    .contact {
+        padding: 70px 6%;
+    }
+} .products {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.eyebrow {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    font-size: 42px;
+    margin: 12px 0;
+}
+
+.section-heading h2 span {
+    color: #2e8b57;
+}
+
+.section-heading p {
+    line-height: 1.7;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.product-card {
+    padding: 35px 28px;
+    border-radius: 20px;
+    text-align: left;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.product-card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.product-card p {
+    line-height: 1.6;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-size: 14px;
+}.how-it-works {
+    padding: 100px 8%;
+    background: #f6faf7;
+}
+
+.steps {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.step-card {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 18px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-6px);
+}
+
+.step-number {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.step-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.step-card p {
+    line-height: 1.6;
+} .impact {
+    padding: 100px 8%;
+}
+
+.impact-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.impact-card {
+    padding: 35px 30px;
+    border: 1px solid #e5eee8;
+    border-radius: 20px;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-6px);
+}
+
+.impact-icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.impact-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.impact-card p {
+    line-height: 1.7;
+} .why-ecoaura {
+    padding: 100px 8%;
+    background: #f6faf7;
+}
+
+.why-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.why-card {
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid #e5eee8;
+    transition: transform 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+}
+
+.why-number {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.why-card p {
+    line-height: 1.7;
+}@media (max-width: 900px) {
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .products,
+    .how-it-works,
+    .impact,
+    .why-ecoaura {
+        padding: 70px 6%;
+    }
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+    .product-grid,
+    .steps,
+    .impact-grid,
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card,
+    .step-card,
+    .impact-card,
+    .why-card {
+        padding: 25px;
+    }
+} 
+.cta {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 750px;
+    margin: auto;
+}
+
+.cta h2 {
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.cta h2 span {
+    color: #2e8b57;
+}
+
+.cta-content > p:not(.eyebrow) {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #2e8b57;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+}
+
+.footer {
+    padding: 60px 8% 25px;
+    background: #14251b;
+    color: white;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-brand {
+    max-width: 350px;
+}
+
+.footer-brand h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.footer-brand p {
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1100px;
+    margin: 45px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px;
+}
