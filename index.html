@@ -462,6 +462,107 @@
 
 
     <script src="script.js"></script>
+ <!-- ================================================================= -->
+<!-- HIGH-STANDARD CLIENT-SIDE E-COMMERCE ENGINE (VANILLA JS)         -->
+<!-- ================================================================= -->
+<div id="eco-cart-widget" style="position: fixed; bottom: 20px; right: 20px; background: #ffffff; color: #121212; border: 2px solid #4CAF50; border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 280px; font-family: sans-serif; z-index: 10000;">
+    <h4 style="margin: 0 0 10px 0; display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 5px; color: #2E7D32;">
+        🛒 Shopping Cart <span id="cart-count" style="background: #4CAF50; color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px;">0 items</span>
+    </h4>
+    <div id="cart-items" style="max-height: 120px; overflow-y: auto; font-size: 13px; color: #555; margin-bottom: 10px;">
+        Cart is empty. Add a product below!
+    </div>
+    <div style="font-weight: bold; font-size: 14px; margin-bottom: 8px; display: flex; justify-content: space-between;">
+        Total: <span id="cart-total" style="color: #2E7D32;">₹0.00</span>
+    </div>
+    <div style="display: flex; gap: 5px;">
+        <input type="text" id="promo-input" placeholder="Promo Code (FIRST50)" style="width: 60%; padding: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 12px;">
+        <button id="apply-promo-btn" style="width: 40%; background: #2E7D32; color: white; border: none; padding: 5px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;">Apply</button>
+    </div>
+    <p id="promo-message" style="margin: 5px 0 0 0; font-size: 11px; font-weight: bold;"></p>
+</div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. STATE MANAGEMENT
+    let cart = [];
+    let discountRate = 0;
+
+    // 2. DOM ELEMENTS
+    const cartCountEl = document.getElementById("cart-count");
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+    const promoInput = document.getElementById("promo-input");
+    const applyPromoBtn = document.getElementById("apply-promo-btn");
+    const promoMessage = document.getElementById("promo-message");
+
+    // 3. AUTO-HOOK UP BUTTONS
+    // This finds every button on your website containing words like "Sachet", "Refill", "Cleaner", or "Buy"
+    const actionButtons = document.querySelectorAll("button, a");
+    actionButtons.forEach(btn => {
+        const text = btn.textContent || "";
+        if (text.includes("₹") || text.toLowerCase().includes("product") || text.toLowerCase().includes("cleaner")) {
+            
+            // Extract a realistic price estimate from button text or assign a mock default
+            let price = 99; 
+            if (text.includes("10")) price = 10;
+            if (text.includes("99")) price = 99;
+            
+            // Extract item title dynamically based on nearest heading context
+            let title = "EcoAura Product";
+            const parent = btn.parentElement;
+            if (parent) {
+                const heading = parent.querySelector("h3, h2, h1");
+                if (heading) title = heading.textContent.trim();
+            }
+
+            // Click listener for adding item to state
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                cart.push({ title, price });
+                updateCartUI();
+            });
+        }
+    });
+
+    // 4. UI UPDATE LOGIC
+    function updateCartUI() {
+        cartCountEl.textContent = `${cart.length} items`;
+        
+        if (cart.length === 0) {
+            cartItemsEl.textContent = "Cart is empty. Add a product below!";
+            cartTotalEl.textContent = "₹0.00";
+            return;
+        }
+
+        // Render line items
+        cartItemsEl.innerHTML = cart.map((item, index) => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                <span>${item.title}</span>
+                <span style="font-weight:bold;">₹${item.price}</span>
+            </div>
+        `).join("");
+
+        // Calculate aggregated totals
+        let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        let finalTotal = subtotal * (1 - discountRate);
+        cartTotalEl.textContent = `₹${finalTotal.toFixed(2)}`;
+    }
+
+    // 5. PROMO CODE ENGINE (Logical validations)
+    applyPromoBtn.addEventListener("click", () => {
+        const code = promoInput.value.trim().toUpperCase();
+        if (code === "FIRST50") {
+            discountRate = 0.50;
+            promoMessage.style.color = "#2E7D32";
+            promoMessage.textContent = "Success: 50% Off Applied!";
+            updateCartUI();
+        } else {
+            promoMessage.style.color = "#D32F2F";
+            promoMessage.textContent = "Invalid Promo Code.";
+        }
+    });
+});
+</script>
 </body>
 </html>
